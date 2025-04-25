@@ -81,8 +81,64 @@ export const register = async(req,res)=>{
 
 export const login = async(req,res)=>{
 
+    const {email,password} = req.body;
+
+   try {
+     const user = await db.user.findUnique({
+         where:{email}
+     })
+ 
+     if(!user){
+         return res.status(401).json({
+             error:"User  not found"
+         })
+     }
+ 
+     const isMatch = await bcrypt.compare(password,user.password);
+ 
+     if(!isMatch){
+         return res.status(401).json({
+             error:"Invalid credentials"
+         })
+     }
+
+     const token = jwt.sign(
+     {id:user.id },
+ process.env.JWT_SECRET,
+{expiresIn:process.env.JWT_SECRET_EXPIRY}
+     )
+ 
+     res.cookie("jwt",token,{
+        httpOnly:true,
+        sameSite:"strict",
+        secure:process.env.NODE_ENV !== "development",
+        maxAge:7*24*60*60*1000
+     })
+
+     return res.status(201).json({
+        message:"Logged in successfully",
+        user:{
+            id:user.id,
+            email:user.email,
+            name:user.email,
+            role:user.role,
+            image:user.image
+        }
+     })
+
+ 
+   } catch (error) {
+    console.log("Error in login controller",error);
+    
+    return res.status(500).json({
+        error:"Error in login controller",
+        
+    })
+   }
 
 }
+
+
 
 export const logout = async(req,res)=>{
 
