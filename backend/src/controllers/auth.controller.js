@@ -55,6 +55,7 @@ export const register = async(req,res)=>{
         })
                
         res.status(201).json({
+            success:true,
             message:"User created successfully",
             user:{
                 id:newUser.id,
@@ -116,6 +117,7 @@ export const login = async(req,res)=>{
      })
 
      return res.status(201).json({
+        success:true,
         message:"Logged in successfully",
         user:{
             id:user.id,
@@ -131,7 +133,7 @@ export const login = async(req,res)=>{
     console.log("Error in login controller",error);
     
     return res.status(500).json({
-        error:"Error in login controller",
+        error:"Error in loging out user",
         
     })
    }
@@ -141,6 +143,26 @@ export const login = async(req,res)=>{
 
 
 export const logout = async(req,res)=>{
+
+    try {
+        res.clearCookie("jwt",{
+            httpOnly:true,
+            sameSite:"strict",
+            secure:process.env.NODE_ENV !== "development",
+        })
+
+         res.status(200).json({
+            success:true,
+            message:"Logged out successfully"
+        })
+
+    } catch (error) {
+        console.log("error in logout controller",error);
+        return res.status(500).json({
+            error:"error loging out user"
+        })
+        
+    }
 
 
 }
