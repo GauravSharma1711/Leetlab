@@ -143,6 +143,15 @@ export const login = async(req,res)=>{
 
 export const logout = async(req,res)=>{
 
+    const user  = await req.user;
+
+    if(!user){
+    console.log("user not authenticated to logout",error);
+    return res.status(403).json({
+        error:"not authorized to logout"
+    })
+    }
+
     try {
         res.clearCookie("jwt",{
             httpOnly:true,
