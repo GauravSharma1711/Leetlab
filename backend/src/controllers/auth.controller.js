@@ -1,8 +1,7 @@
 import bcrypt from 'bcryptjs'
 
-// import {db} from '../libs/db.js'
-import {PrismaClient} from '@prisma/client'
-const db = new PrismaClient();
+import {db} from '../libs/db.js'
+
 
 import dotenv from 'dotenv'
 dotenv.config();
@@ -169,6 +168,16 @@ export const logout = async(req,res)=>{
 
 
 export const check = async(req,res)=>{
+try {
+    res.status(200).json({
+        success:true,
+        message:"user suthjenticated successfully",
+        user:req.user
+    })
+} catch (error) {
+    console.log("error checking user",error);
+    
+}
 
 
 }
