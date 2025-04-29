@@ -1,4 +1,5 @@
 import { getJudge0LanguageId,submitBatch,pollBatchResults } from "../libs/judge0.lib.js";
+import { db } from "../libs/db.js";
 
 export const createProblem = async(req,res)=>{
     const {
@@ -87,4 +88,50 @@ export const createProblem = async(req,res)=>{
         });
       
       }
+}
+
+export const getAllProblems = async(req,res)=>{
+
+  try {
+    const problems = await db.problem.findMany();
+    
+    if (!problems) {
+      return res.status(404).json({
+        error: "No problems Found",
+      });
+    }
+
+    res.status(200).json({
+      sucess: true,
+      message: "Message Fetched Successfully",
+      problems,
+    });
+
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      error: "Error While Fetching Problems",
+    }); 
+  }
+
+}
+
+export const getProblemById = async(req,res)=>{
+try {
+  
+} catch (error) {
+  
+}
+}
+
+export const updateProblem = async(req,res)=>{
+
+}
+
+export const deleteProblem = async(req,res)=>{
+
+}
+
+export const getAllProblemsSolvedByUser = async(req,res)=>{ 
+
 }
