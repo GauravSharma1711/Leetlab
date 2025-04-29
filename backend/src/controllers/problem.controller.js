@@ -258,14 +258,14 @@ export const deleteProblem = async(req,res)=>{
         return res.status(404).json({ error: "Problem not found." });
       }
 
-      const deletedProblem = await db.problem.delete({
+     await db.problem.delete({
         where:{id}
       })
 
       return res.status(200).json({
         sucess: true,
         message: "Problem deleted Successfully",
-        deletedProblem,
+     
       });
     } catch (error) {
       console.log(error);
