@@ -66,7 +66,7 @@ export const getAllTheSubmissionsForProblem = async(req,res)=>{
        res.status(200).json({
             success:true,
             message:"Submissions Fetched successfully",
-            count:submission
+            count:submissions
         })  
         
     } catch (error) {
