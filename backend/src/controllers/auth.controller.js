@@ -159,7 +159,7 @@ export const logout = async(req,res)=>{
             secure:process.env.NODE_ENV !== "development",
         })
 
-         res.status(200).json({
+         res.status(204).json({
             success:true,
             message:"Logged out successfully"
         })
@@ -180,7 +180,7 @@ export const check = async(req,res)=>{
 try {
     res.status(200).json({
         success:true,
-        message:"user suthjenticated successfully",
+        message:"user authenticated successfully",
         user:req.user
     })
 } catch (error) {

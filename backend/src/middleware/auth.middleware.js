@@ -14,13 +14,19 @@ export const authMiddleware = async(req,res,next)=>{
         .json({error:"unauthorized-no token provided"}) 
         }
 
-
-        const decoded = jwt.verify(token,process.env.JWT_SECRET);
-
-        if(!decoded){
+let decoded;
+try {
+    decoded = jwt.verify(token,process.env.JWT_SECRET);
+    if(!decoded){
         console.log("unauthorized");
         return res.status(403).json({error:"unauthorized"})
         }
+} catch (error) {
+    return res.status(401)
+    .json({error:"unauthorized-no token provided"}) 
+    }
+
+
 
         const user = await db.user.findUnique({
             where:{id:decoded.id},
@@ -45,11 +51,11 @@ next();
         console.error("error authenticating user",error);
         res.status(500).json({message:"Error authenticating user"});
     }
-
-
-
-
 }
+
+
+
+
 
 
 export const checkAdmin = async (req,res,next)=>{
