@@ -76,7 +76,7 @@ export const createProblem = async(req,res)=>{
 
     return res.status(201).json({
       sucess: true,
-      message: "Message Created Successfully",
+      message: "problem Created Successfully",
       problem: newProblem,
     });
     

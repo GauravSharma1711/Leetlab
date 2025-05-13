@@ -73,11 +73,11 @@ try {
     const userId = req.user.id;
 
     const playList = await db.playlist.create({
-        dta:{
+        data:{
             name,
-        description,
-        userId,
-        }
+           description,
+          userId,
+         }
     })
 
     
@@ -96,17 +96,17 @@ try {
   export const   addProblemToPlaylist = async(req,res)=>{
 try {
 
-  const { playlistId } = req.params;
+  const { playListId } = req.params;
   const { problemIds } = req.body;
 
    if (!Array.isArray(problemIds) || problemIds.length === 0) {
       return res.status(400).json({ error: "Invalid or missing problemsId" });
     }
 
-  // Create records fro each problems in the playlist
+  // Create records for each problems in the playlist
     const problemsInPlaylist = await db.problemInPlaylist.createMany({
       data: problemIds.map((problemId) => ({
-        playlistId,
+        playListId,
         problemId,
       })),
     });
@@ -126,11 +126,11 @@ try {
 
   export  const  deletePlaylist = async(req,res)=>{
 try {
-    const { playlistId } = req.params;
+    const { playListId } = req.params;
 
     const deletedPlaylist = await db.playlist.delete({
         where:{
-            id:playlistId,
+            id:playListId,
         }
     })
 
@@ -148,10 +148,10 @@ try {
   }
 
 
-  export const  removeProblemFromPlaylis = async(req,res)=>{
+  export const  removeProblemFromPlaylist = async(req,res)=>{
 try {
 
-    const { playlistId } = req.params;
+    const { playListId } = req.params;
   const { problemIds } = req.body;
 
    if (!Array.isArray(problemIds) || problemIds.length === 0) {
@@ -160,7 +160,7 @@ try {
 
      const deletedProblem = await db.problemInPlaylist.deleteMany({
       where: {
-        playlistId,
+        playListId,
         problemId: {
           in: problemIds,
         },

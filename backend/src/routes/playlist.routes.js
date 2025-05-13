@@ -11,12 +11,12 @@ router.get("/:playlistId" , authMiddleware , getPlayListDetails);
 
 router.post("/create-playlist" , authMiddleware , createPlaylist);
 
-router.post("/:playlistId/add-problem" , authMiddleware , addProblemToPlaylist);
+router.post("/add-problem/:playListId" , authMiddleware , addProblemToPlaylist);
 
-router.delete("/:playlistId" , authMiddleware , deletePlaylist);
+router.delete("/delete/:playListId" , authMiddleware , deletePlaylist);
 
 
-router.delete("/:playlistId/remove-problem" , authMiddleware , removeProblemFromPlaylist)
+router.delete("/remove-problem/:playListId" , authMiddleware , removeProblemFromPlaylist)
 
 
 export default router;
