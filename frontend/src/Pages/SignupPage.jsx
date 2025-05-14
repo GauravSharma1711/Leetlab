@@ -11,6 +11,9 @@ import {
   Lock,
   Mail,
 } from "lucide-react";
+import AuthImagePattern from "../components/AuthImagePattern";
+
+import {useAuthStore} from '../store/useAuthStore'
 
 import {z} from 'zod'
 
@@ -37,7 +40,7 @@ const SignupPage = () => {
 
   const onSubmit = async (data)=>{
    try {
-    // await signup(data)
+     await signup(data)
     console.log("signup data" , data)
    } catch (error) {
      console.error("SignUp failed:", error);
@@ -46,7 +49,7 @@ const SignupPage = () => {
 
   return (
       <div className='h-screen grid lg:grid-cols-2'>
-      //   Left Side - Form
+     {/* left side */}
      <div className="flex flex-col justify-center items-center p-6 sm:p-12">
         <div className="w-full max-w-md space-y-8">
           {/* Logo */}
