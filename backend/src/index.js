@@ -1,5 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import cors from 'cors';
 dotenv.config()
 import cookieParser from 'cookie-parser'
 
@@ -16,6 +17,11 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json())
 app.use(cookieParser())
+
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true 
+}));
 
 app.get('/',(req,res)=>{
     res.send("hello leetlab🔥")
