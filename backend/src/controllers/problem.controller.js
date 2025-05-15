@@ -93,7 +93,17 @@ export const createProblem = async(req,res)=>{
 export const getAllProblems = async(req,res)=>{
 
   try {
-    const problems = await db.problem.findMany();
+    const problems = await db.problem.findMany(
+      {
+           include:{
+            solvedBy: {
+              where:{
+                userId:req.user.id
+              }
+            }
+           }
+      }
+  );
     
     if (!problems) {
       return res.status(404).json({
@@ -108,7 +118,7 @@ export const getAllProblems = async(req,res)=>{
     });
 
   } catch (error) {
-    console.log(error);
+    console.log("Error getting all problems",error);
     return res.status(500).json({
       error: "Error While Fetching Problems",
     }); 
