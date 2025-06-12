@@ -1,12 +1,11 @@
-"use client"
+import React from 'react'
 
 import { Code, Terminal, FileCode, Braces } from "lucide-react"
 import { useEffect, useState } from "react"
 
 
-
-const CodeBackground = ({ title, subtitle }) => {
-  const [activeIndex, setActiveIndex] = useState(0)
+const AuthImagePattern = ({title,subtitle}) => {
+ const [activeIndex, setActiveIndex] = useState(0)
 
   // Code snippets to display in the background
   const codeSnippets = [
@@ -131,4 +130,4 @@ function reverseList(head) {
   )
 }
 
-export default CodeBackground
+export default AuthImagePattern
