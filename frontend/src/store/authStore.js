@@ -44,6 +44,7 @@ login : async (data)=>{
 logout : async ()=>{
     try {
         const res = await axiosInstance.delete('/auth/logout');
+        set({authUser:null})
         toast.success(res.data.message)
     } catch (error) {
         console.log("Error logging out",error);
@@ -59,8 +60,14 @@ check : async ()=>{
         set({authUser:res.data.user})
         toast.success(res.data.message);
     } catch (error) {
-        console.log("Error Checking auth ",error);
-        toast.error("Error Checking auth");
+      if(error.response && error.response.status === 401){
+            // Not logged in — not a real error
+            set({ authUser: null });
+            console.log("User not logged in — expected.");
+        } else {
+            console.log("Unexpected Error Checking auth:", error);
+            toast.error("Unexpected Error Checking auth");
+        }
     }finally{
     set({isCheckingAuth:false})
     }

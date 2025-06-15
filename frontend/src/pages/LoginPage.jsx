@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuthStore from '../store/authStore';
 
 const LoginPage = () => {
@@ -9,11 +9,13 @@ const LoginPage = () => {
 
  const {isLoggingIn,login} = useAuthStore();
 
-  const handleSubmit = (e) => {
+ const navigate = useNavigate();
+
+  const handleSubmit = async(e) => {
     e.preventDefault();
    const formData = {email,password}
-    login(formData);
-
+   await login(formData);
+     navigate('/problems')
     setEmail('');
     setPassword('');
   };
