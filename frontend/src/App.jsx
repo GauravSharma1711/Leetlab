@@ -11,6 +11,7 @@ import CreateProblem from './pages/CreateProblem'
 
 import ProtectedRoute from './components/ProtectRoute';
 import ProblemsPage from './pages/ProblemsPage'
+import ProblemPage from './pages/ProblemPage'
 
 const App = () => {
 
@@ -24,9 +25,8 @@ const App = () => {
 
   if (isCheckingAuth) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center">
+      <div className="flex justify-center items-center min-h-[200px]">
         <span className="loading loading-spinner loading-lg text-primary"></span>
-        <p className="mt-4 text-gray-500">Checking Authentication...</p>
       </div>
     );
   }
@@ -52,6 +52,8 @@ const App = () => {
      <Route path='/create' element={authUser ?<CreateProblem/>:<Navigate to={'/'} />} />
 
   <Route path='/problems' element={authUser ?<ProblemsPage/>:<Navigate to={'/'} />} />
+
+  <Route path='/problem/:id' element={authUser ?<ProblemPage/>:<Navigate to={'/'} />} />
 
        </Routes>
     </div>
