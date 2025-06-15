@@ -12,6 +12,7 @@ export const createProblem = async(req,res)=>{
         testcases,
         codeSnippets,
         referenceSolutions,
+        
       } = req.body;
 
 
@@ -71,6 +72,7 @@ export const createProblem = async(req,res)=>{
         codeSnippets,
         referenceSolutions,
         userId: req.user.id,
+       
       },
     });
 
@@ -113,7 +115,7 @@ export const getAllProblems = async(req,res)=>{
 
     res.status(200).json({
       sucess: true,
-      message: "Message Fetched Successfully",
+      message: "Problems Fetched Successfully",
       problems,
     });
 
@@ -139,7 +141,7 @@ try {
 
   return res.status(200).json({
     sucess: true,
-    message: "Message Created Successfully",
+    message: "Problem fetched successfully",
     problem,
   });
 } catch (error) {
