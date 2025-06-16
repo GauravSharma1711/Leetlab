@@ -11,7 +11,7 @@ const SignUpPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
+    
     const formData = {name,email,password};
     signUp(formData);
     setName('');
@@ -20,15 +20,15 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className='min-h-screen w-full flex items-center justify-center bg-gray-50'>
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg ">
+    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 p-4'>
+      <div className="w-full max-w-md p-8 space-y-7 bg-gray-800 rounded-xl shadow-2xl border border-gray-700">
         
-        <h2 className='text-black font-semibold text-4xl text-center'>Create New Account</h2>
+        <h2 className='text-white font-extrabold text-4xl text-center mb-6'>Create New Account</h2>
         
-        <form className='space-y-4' onSubmit={handleSubmit}>
+        <form className='space-y-6' onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-              Name
+            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+              Full Name
             </label>
             <input
               id="name"
@@ -37,15 +37,16 @@ const SignUpPage = () => {
               onChange={(e) => setName(e.target.value)}
               type="text"
               required
-              placeholder="Enter your name"
-              className='input input-primary focus:outline-none focus:ring-0 focus:border-gray-300
- w-full bg-white text-black'
+              placeholder="Your full name"
+              className='w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 
+                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent 
+                         transition-all duration-200 placeholder-gray-400'
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
+            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+              Email Address
             </label>
             <input
               id="email"
@@ -54,14 +55,15 @@ const SignUpPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               required
-              placeholder="Enter your email"
-              className='input input-primary focus:outline-none focus:ring-0 focus:border-gray-300
- w-full bg-white text-black'
+              placeholder="you@example.com"
+              className='w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 
+                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent 
+                         transition-all duration-200 placeholder-gray-400'
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-1">
               Password
             </label>
             <input
@@ -71,26 +73,37 @@ const SignUpPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              placeholder="Enter your password"
-              className='input input-primary focus:outline-none focus:ring-0 focus:border-gray-300
- w-full bg-white text-black'
+              placeholder="••••••••"
+              className='w-full px-4 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 
+                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent 
+                         transition-all duration-200 placeholder-gray-400'
             />
           </div>
 
           <button 
-          type="submit" 
-          className="btn btn-lg btn-active btn-primary w-full">
-          {isSigningUp
-          ?
-          ( <span className="loading loading-spinner loading-sm"></span>)
-          :
-          ('Submit')}
-           
-            </button>
+            type="submit" 
+            className={`w-full py-3 rounded-lg text-lg font-semibold transition-all duration-300 
+                       ${isSigningUp 
+                         ? 'bg-blue-700 text-gray-300 cursor-not-allowed flex items-center justify-center gap-2' 
+                         : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md'}`}
+            disabled={isSigningUp}
+          >
+            {isSigningUp ? (
+              <>
+                <span className='w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin'></span>
+                Signing up...
+              </>
+            ) : (
+              'Create Account'
+            )}
+          </button>
         </form>
 
-        <p className='text-gray-500 text-center'>
-          Already have an account? <Link className='text-blue-500' to={'/login'}>Login</Link>
+        <p className='text-gray-400 text-center text-sm mt-6'>
+          Already have an account? 
+          <Link className='text-blue-500 hover:text-blue-400 font-medium ml-1 transition-colors duration-200' to={'/login'}>
+            Log in
+          </Link>
         </p>
       </div>
     </div>
