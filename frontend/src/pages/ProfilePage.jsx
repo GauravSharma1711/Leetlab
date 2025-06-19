@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import useAuthStore from '../store/authStore.js';
 import useProblemStore from '../store/problemStore.js';
+import {Link} from 'react-router-dom'
 
 const ProfilePage = () => {
-  const { authUser } = useAuthStore();
+  const { authUser} = useAuthStore();
   const { solvedProblems, getSolvedProblemByUser } = useProblemStore();
 
   const [easy, setEasy] = useState(0);
   const [medium, setMedium] = useState(0);
   const [hard, setHard] = useState(0);
 
-  // Fetch solved problems on component mount
+ 
+  
+  
+ 
   useEffect(() => {
     getSolvedProblemByUser();
   }, [getSolvedProblemByUser]);
 
-  // Update difficulty counts when solvedProblems changes
+  
   useEffect(() => {
     if (solvedProblems && solvedProblems.length > 0) {
       let easyCount = 0;
@@ -39,6 +43,9 @@ const ProfilePage = () => {
     }
   }, [solvedProblems]);
 
+
+
+
   return (
     <div className='min-h-screen w-full flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8 bg-base-200'>
       {/* User Profile Section */}
@@ -47,12 +54,12 @@ const ProfilePage = () => {
           <h2 className='card-title text-3xl text-primary mb-4'>User Profile</h2>
           <div className='flex flex-col gap-2'>
             <p className='text-lg'>
-              <strong className='font-semibold'>Name:</strong> {authUser.name}
+              <strong className='font-semibold'>Name:</strong> {authUser?.name}
             </p>
             <p className='text-lg'>
-              <strong className='font-semibold'>Email:</strong> {authUser.email}
+              <strong className='font-semibold'>Email:</strong> {authUser?.email}
             </p>
-            <div className='badge badge-lg badge-secondary'>{authUser.role}</div>
+            <div className='badge badge-lg badge-secondary'>{authUser?.role}</div>
           </div>
         </div>
       </div>
@@ -98,13 +105,22 @@ const ProfilePage = () => {
             <div className='card bg-neutral text-neutral-content shadow-lg'>
               <div className='card-body items-center text-center'>
                 <h2 className='card-title text-2xl'>View Playlists</h2>
-                <button className='btn btn-primary mt-4 w-full'>View</button>
+                  <Link className=' w-full' to={'/viewPlaylist'}>
+                  <button className='btn btn-primary mt-4 w-full'>
+                  View
+                  </button>
+                  </Link>
+
               </div>
             </div>
             <div className='card bg-neutral text-neutral-content shadow-lg'>
               <div className='card-body items-center text-center'>
                 <h2 className='card-title text-2xl'>Create Playlist</h2>
-                <button className='btn btn-primary mt-4 w-full'>Create</button>
+                  <Link className=' w-full' to={'/createPlaylist'}>
+                <button className='btn btn-primary mt-4 w-full'>
+                  Create
+                </button>
+                  </Link>
               </div>
             </div>
           </div>
@@ -117,20 +133,22 @@ const ProfilePage = () => {
           <h1 className='card-title text-3xl text-primary text-center mb-6'>
             All Solved Problems
           </h1>
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center'> {/* Changed to grid for better control */}
+          <div className=' m-4 gap-6 flex flex-col justify-items-center'> 
             {solvedProblems && solvedProblems.length > 0 ? (
               solvedProblems.map((problem) => (
-                <div key={problem.id} className='card w-full bg-base-200 shadow-lg rounded-box transform hover:scale-105 transition-transform duration-200'>
-                  <div className='card-body p-5 flex flex-col justify-between h-full'>
+                <div key={problem.id} className=' flex card mt-8 w-full bg-base-200 shadow-lg rounded-box '>
+                  <div className='card-body p-5 flex  justify-between h-full'>
                     <div> {/* Wrapper for title and description */}
                       <h3 className='card-title text-xl font-bold text-base-content mb-2'>
+                        <Link to={`/problem/${problem.id}`}>
                         {problem.title}
+                        </Link>
                       </h3>
                       <p className='text-sm text-base-content opacity-80 line-clamp-3 mb-4'>
                         {problem.description}
                       </p>
                     </div>
-                    <div className='card-actions justify-end mt-auto'> {/* Pushed to bottom */}
+                    <div className='card-actions  mt-auto'> {/* Pushed to bottom */}
                       <div
                         className={`badge ${
                           problem.difficulty === 'EASY'
@@ -142,14 +160,14 @@ const ProfilePage = () => {
                       >
                         {problem.difficulty}
                       </div>
-                      {/* Optional: Add a button to view problem details */}
-                      {/* <button className="btn btn-sm btn-outline btn-info">View</button> */}
+                      
+                     
                     </div>
                   </div>
                 </div>
               ))
             ) : (
-              <div className='col-span-full w-full text-center py-10'> {/* Centered across all columns */}
+              <div className='col-span-full w-full text-center py-10'> 
                 <p className='text-xl text-gray-500'>No problems solved yet! Keep practicing!</p>
               </div>
             )}

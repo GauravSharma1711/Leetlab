@@ -21,7 +21,7 @@ const ProblemPage = () => {
   const {isLoading:isSubmissionsLoading , submission:submissions,
          getSubmissionForProblem } = useSubmissionStore();
 
-  console.log(submissions);
+
   
   const [activeTab , setActiveTab] = useState("description")
 

@@ -12,6 +12,8 @@ import ProblemPage from './pages/ProblemPage';
 import useAuthStore from './store/authStore';
 import LoadingSpinner from './components/LoadingSpinner'; 
 import useProblemStore from './store/problemStore';
+import CreatePlaylist from './pages/CreatePlaylist';
+import ViewPlaylist from './pages/ViewPlaylist';
 
 const App = () => {
   const { authUser, check, isCheckingAuth } = useAuthStore();
@@ -32,14 +34,17 @@ const App = () => {
     <div>
       <Toaster />
       <Routes>
+
         <Route path='/' element={authUser ? <Navigate to="/problems" /> : <HomePage />} />
+
         <Route path='/login' element={!authUser ? <LoginPage /> : <Navigate to={'/problems'} />} />
         <Route path='/signup' element={!authUser ? <SignUpPage /> : <Navigate to={'/problems'} />} />
-        <Route path='/profile' element={authUser ? <ProfilePage /> : <Navigate to={'/'} />} />
-
-        
+        <Route path='/profile' element={ <ProfilePage /> } />
+  <Route path='/createPlaylist' element={ <CreatePlaylist /> } />
+  <Route path='/viewPlaylist' element={ <ViewPlaylist /> } />
 
         <Route path='/problems' element={authUser ? <ProblemsPage /> : <Navigate to={'/'} />} />
+
 
 
 <Route path='/problem/:id' element={
