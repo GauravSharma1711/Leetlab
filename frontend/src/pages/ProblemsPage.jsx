@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Table from '../components/Table';
 
+
 const ProblemsPage = () => {
   const difficulties = ["EASY", "MEDIUM", "HARD"];
   const [difficulty, setDifficulty] = useState("ALL");
   const [search, setSearch] = useState("");
+
 
   return (
     <div className='min-h-screen bg-gray-900 text-gray-100'>

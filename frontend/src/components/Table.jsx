@@ -7,6 +7,9 @@ const Table = ({ difficulty, search }) => {
   const { problems, getAllProblems, isProblemsLoading } = useProblemStore();
   const { authUser } = useAuthStore();
 
+ 
+  
+
   useEffect(() => {
     getAllProblems();
   }, []);
@@ -69,7 +72,8 @@ const Table = ({ difficulty, search }) => {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <input
                     type="checkbox"
-                    checked={p.solvedBy?.includes(authUser?.id)} // Use optional chaining for solvedBy
+                    checked={p.solvedBy?.some(solved => solved.userId === authUser?.id)}
+
                     readOnly
                     className="form-checkbox h-5 w-5 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500" // Styled checkbox
                   />

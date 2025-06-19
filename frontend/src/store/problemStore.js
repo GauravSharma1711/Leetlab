@@ -10,6 +10,7 @@ const useProblemStore = create((set)=>({
     problem :null,
     isProblemsLoading:false,
     isProblemLoading : false,
+    solvedProblems: [],
 
     getAllProblems : async ()=>{
         try {
@@ -39,9 +40,18 @@ const useProblemStore = create((set)=>({
         }finally{
       set({isProblemLoading:false})
         }
+    },
+
+    getSolvedProblemByUser: async () => {
+
+    try {
+      const res = await axiosInstance.get("/problems/get-solved-problems");
+      set({ solvedProblems: res.data.problems });
+    } catch (error) { 
+      console.log("Error getting solved problems", error);
+      toast.error("Error getting solved problems");
     }
-
-
+  },
 
 }))
 

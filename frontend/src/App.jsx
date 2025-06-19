@@ -6,7 +6,6 @@ import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
-import CreateProblem from './pages/CreateProblem';
 import ProblemsPage from './pages/ProblemsPage';
 import ProblemPage from './pages/ProblemPage';
 
@@ -17,6 +16,9 @@ import useProblemStore from './store/problemStore';
 const App = () => {
   const { authUser, check, isCheckingAuth } = useAuthStore();
   const {isProblemLoading} = useProblemStore()
+
+
+  
 
   useEffect(() => {
     check();
@@ -34,7 +36,9 @@ const App = () => {
         <Route path='/login' element={!authUser ? <LoginPage /> : <Navigate to={'/problems'} />} />
         <Route path='/signup' element={!authUser ? <SignUpPage /> : <Navigate to={'/problems'} />} />
         <Route path='/profile' element={authUser ? <ProfilePage /> : <Navigate to={'/'} />} />
-        <Route path='/create' element={authUser ? <CreateProblem /> : <Navigate to={'/'} />} />
+
+        
+
         <Route path='/problems' element={authUser ? <ProblemsPage /> : <Navigate to={'/'} />} />
 
 

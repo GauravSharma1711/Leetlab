@@ -52,7 +52,7 @@ const Navbar = () => {
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-blue-500 shadow-md">
                 <img
                   alt="User Avatar"
-                  src="https://avatar.iran.liara.run/public/boy" // Consider replacing with actual user avatar if available
+                  src={`https://avatar.iran.liara.run/public/boy?username=${authUser.email}`}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -65,11 +65,7 @@ const Navbar = () => {
                   Profile
                 </Link>
               </li>
-              <li>
-                <Link to={'/create'} className="block px-4 py-3 text-gray-200 hover:bg-gray-600 hover:text-white transition-colors duration-200">
-                  Create Problem
-                </Link>
-              </li>
+            
               <li>
                 <button onClick={handleLogout} className="block w-full text-left px-4 py-3 text-red-400 hover:bg-gray-600 hover:text-red-300 transition-colors duration-200">
                   Logout
