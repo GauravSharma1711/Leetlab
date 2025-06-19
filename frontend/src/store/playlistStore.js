@@ -52,6 +52,9 @@ const usePlaylistStore = create((set)=>({
  deletePlaylist : async (id)=>{
     try {
         const res = await axiosInstance.delete(`/playlist/delete/${id}`);
+         set((state) => ({
+      playlists: state.playlists.filter(p => p.id !== id)
+    }));
         toast.success(res.data.message);
     } catch (error) {
         console.log("Error deleting playlist",error);
@@ -65,6 +68,24 @@ const usePlaylistStore = create((set)=>({
     const res = await axiosInstance.delete(`/playlist/remove-problem/${playlistId}`,{
         data: { problemIds }
     })
+
+
+     set((state) => ({
+      playlists: state.playlists.map((playlist) =>
+        playlist.id === playlistId
+          ?
+           {
+              ...playlist,
+              problems: playlist.problems.filter(
+                (problem) => !problemIds.includes(problem.id)
+              )
+            }
+          : playlist
+      )
+    }));
+
+
+
     toast.success(res.data.message);
     } catch (error) {
         console.log("Error deleting problem from playlist");

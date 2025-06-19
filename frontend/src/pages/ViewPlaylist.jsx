@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import usePlaylistStore from '../store/playlistStore';
-import { MdDeleteForever } from 'react-icons/md'; // Import the delete icon
-import {Link,useNavigate} from 'react-router-dom'
+import { MdDeleteForever } from 'react-icons/md'; 
+
 
 
 const ViewPlaylist = () => {
     const { getPlaylistsDetails, playlists, deletePlaylist, deleteProblemFromPlaylist } = usePlaylistStore();
 
-    const navigate = useNavigate();
+   
 
     useEffect(() => {
         getPlaylistsDetails();
@@ -17,14 +17,14 @@ const ViewPlaylist = () => {
     const handleDeletePlaylist = async(playlistId) => {
             deletePlaylist(playlistId);
             await getPlaylistsDetails()
-            navigate('/profile')
+           
     };
 
     // Corrected handleDeleteProblem to properly use a callback for onClick
     const handleDeleteProblem = async(playlistId, problemIds) => {
             deleteProblemFromPlaylist(playlistId, problemIds);
              await getPlaylistsDetails()
-              navigate('/profile')
+             
     };
 
     return (
