@@ -3,6 +3,7 @@ import React from 'react'
 
 
 import Navbar from '../components/Navbar';
+import  Home  from '../components/Home';
 
 const HomePage = () => {
 
@@ -12,7 +13,8 @@ const HomePage = () => {
 
     {/* navbar */}
    <Navbar/>
-   <p>this is home page</p>
+    <Home/>
+   
     </div>
   )
 }

@@ -14,6 +14,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import useProblemStore from './store/problemStore';
 import CreatePlaylist from './pages/CreatePlaylist';
 import ViewPlaylist from './pages/ViewPlaylist';
+import CreateProblem from './components/CreateProblem';
 
 const App = () => {
   const { authUser, check, isCheckingAuth } = useAuthStore();
@@ -24,7 +25,7 @@ const App = () => {
 
   useEffect(() => {
     check();
-  }, []);
+  }, [check]);
 
   if (isCheckingAuth) {
     return <LoadingSpinner />; 
@@ -42,6 +43,7 @@ const App = () => {
         <Route path='/profile' element={ <ProfilePage /> } />
   <Route path='/createPlaylist' element={ <CreatePlaylist /> } />
   <Route path='/viewPlaylist' element={ <ViewPlaylist /> } />
+<Route path='/createProblem' element={ <CreateProblem /> } />
 
         <Route path='/problems' element={authUser ? <ProblemsPage /> : <Navigate to={'/'} />} />
 

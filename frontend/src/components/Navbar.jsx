@@ -9,7 +9,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     await logout();
     // Optional: navigate to login page after logout
-    navigate('/login'); 
+    navigate('/'); 
   }
 
   const handleSignup = () => {
@@ -65,7 +65,11 @@ const Navbar = () => {
                   Profile
                 </Link>
               </li>
-            
+             <li>
+                <Link to={'/createProblem'} className="block px-4 py-3 text-gray-200 hover:bg-gray-600 hover:text-white transition-colors duration-200">
+                  Create Problem
+                </Link>
+              </li>
               <li>
                 <button onClick={handleLogout} className="block w-full text-left px-4 py-3 text-red-400 hover:bg-gray-600 hover:text-red-300 transition-colors duration-200">
                   Logout
