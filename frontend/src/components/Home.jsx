@@ -25,7 +25,7 @@ const Home = () => {
                     Key Features
                 </h2>
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
-                    {/* Feature Card: Advanced Code Editor */}
+                    
                     <div className='card bg-base-300 shadow-xl rounded-2xl p-6 transform transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl animate-fade-in-up'>
                         <div className='card-body items-center text-center p-0'>
                             <h3 className='card-title text-2xl font-semibold text-accent mb-3'>
@@ -34,14 +34,14 @@ const Home = () => {
                             <p className='text-base text-base-content opacity-80'>
                                 Integrated Monaco Editor supporting multiple languages for a seamless coding experience.
                             </p>
-                            {/* Optional: Add an icon */}
+                          
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mt-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                             </svg>
                         </div>
                     </div>
 
-                    {/* Feature Card: Custom Playlists */}
+                   
                     <div className='card bg-base-300 shadow-xl rounded-2xl p-6 transform transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl animate-fade-in-up delay-100'>
                         <div className='card-body items-center text-center p-0'>
                             <h3 className='card-title text-2xl font-semibold text-accent mb-3'>
@@ -50,14 +50,14 @@ const Home = () => {
                             <p className='text-base text-base-content opacity-80'>
                                 Create and organize your own playlists to group related problems and optimize your learning path.
                             </p>
-                            {/* Optional: Add an icon */}
+                           
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mt-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
                             </svg>
                         </div>
                     </div>
 
-                    {/* Feature Card: Real-time Results */}
+                  
                     <div className='card bg-base-300 shadow-xl rounded-2xl p-6 transform transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl animate-fade-in-up delay-200'>
                         <div className='card-body items-center text-center p-0'>
                             <h3 className='card-title text-2xl font-semibold text-accent mb-3'>
@@ -66,7 +66,7 @@ const Home = () => {
                             <p className='text-base text-base-content opacity-80'>
                                 Get instant results, including memory and time consumption, to quickly iterate and improve your solutions.
                             </p>
-                            {/* Optional: Add an icon */}
+                          
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mt-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                             </svg>
@@ -75,7 +75,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Call to Action Section (Optional but good for Home pages) */}
+          
             <section className='py-16 px-4 text-center bg-primary text-primary-content'>
                 <h2 className='text-3xl font-bold mb-4 animate-fade-in-up'>Ready to Level Up Your DSA Skills?</h2>
                 <p className='text-xl opacity-90 mb-8 animate-fade-in-up delay-100'>
@@ -86,7 +86,7 @@ const Home = () => {
                 </Link>
             </section>
 
-            {/* Footer Section */}
+        
             <footer className='footer footer-center p-8 bg-base-300 text-base-content'>
                 <aside>
                     <p className='text-lg'>
@@ -96,7 +96,7 @@ const Home = () => {
                         Designed with ❤️ for aspiring problem solvers.
                     </p>
                 </aside>
-                {/* Optional: Add social media icons or navigation links here */}
+                
                 <nav>
                     <div className="grid grid-flow-col gap-4 mt-2">
                         <a href="#" className="link link-hover">About Us</a>

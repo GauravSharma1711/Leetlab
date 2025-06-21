@@ -27,7 +27,7 @@ const CreatePlaylist = () => {
            }
   }
 
-  // Handle checkbox change
+  
   const handleProblemToggle = (problemId) => {
     setSelectedProblems((prevSelected) => {
       const newSelected = new Set(prevSelected);
@@ -42,7 +42,7 @@ const CreatePlaylist = () => {
 
   const navigate = useNavigate();
 
-  // Handle playlist creation (placeholder)
+ 
   const handleCreatePlaylist = async() => {
     console.log('Playlist Name:', playlistName);
     console.log('Playlist Description:', playlistDescription);
@@ -124,16 +124,16 @@ const CreatePlaylist = () => {
                   className={`flex items-center justify-between p-4 mb-3 rounded-lg cursor-pointer transition-all duration-200
                   ${
                     selectedProblems.has(problem.id)
-                      ? 'bg-primary/20 hover:bg-primary/30 ring-2 ring-primary' // Selected style
-                      : 'bg-base-200 hover:bg-base-300' // Unselected style
+                      ? 'bg-primary/20 hover:bg-primary/30 ring-2 ring-primary' 
+                      : 'bg-base-200 hover:bg-base-300' 
                   }`}
-                  onClick={() => handleProblemToggle(problem.id)} // Toggle selection on click
+                  onClick={() => handleProblemToggle(problem.id)} 
                 >
                   <div className='flex items-center gap-4 flex-grow mr-4'>
                     <input
                       type='checkbox'
                       checked={selectedProblems.has(problem.id)}
-                      onChange={() => handleProblemToggle(problem.id)} // Also toggle on checkbox click
+                      onChange={() => handleProblemToggle(problem.id)} 
                       className='checkbox checkbox-primary'
                     />
                     <div>

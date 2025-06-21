@@ -68,7 +68,7 @@ const SubmissionResults = ({ submission }) => {
         </div>
       </div>
 
-      {/* Test Cases Results */}
+     
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="card-title mb-4">Test Cases Results</h2>

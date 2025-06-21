@@ -12,7 +12,7 @@ const Table = ({ difficulty, search }) => {
 
   useEffect(() => {
     getAllProblems();
-  }, []);
+  }, [getAllProblems]);
 
   const filteredProblems = problems
     .filter((p) => p.title.toLowerCase().includes(search.toLowerCase()))
@@ -28,7 +28,7 @@ const Table = ({ difficulty, search }) => {
     );
   }
 
-  // helper function to return color class for difficulty badge
+ 
   const getDifficultyColor = (level) => {
     switch (level.toLowerCase()) {
       case 'easy':

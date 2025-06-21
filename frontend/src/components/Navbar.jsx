@@ -47,7 +47,7 @@ const Navbar = () => {
             </button>
           </>
         ) : (
-          <div className="relative group"> {/* Using group for hover effects on parent */}
+          <div className="relative group"> 
             <button className="flex items-center space-x-2 p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-blue-500 shadow-md">
                 <img
@@ -58,7 +58,7 @@ const Navbar = () => {
               </div>
             </button>
 
-            {/* Dropdown content, hidden by default, shown on group-hover/focus-within */}
+          
             <ul className="absolute right-0 mt-3 w-52 bg-gray-700 rounded-lg shadow-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-focus-within:opacity-100 group-hover:visible group-focus-within:visible transform translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-all duration-300 z-50">
               <li>
                 <Link to={'/profile'} className="block px-4 py-3 text-gray-200 hover:bg-gray-600 hover:text-white transition-colors duration-200">

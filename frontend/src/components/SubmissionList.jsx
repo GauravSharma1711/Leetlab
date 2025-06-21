@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 const SubmissionsList = ({ submissions, isLoading }) => {
-  // Helper function to safely parse JSON strings
+  
   const safeParse = (data) => {
     if(!data)return [];
     try {
@@ -19,7 +19,7 @@ const SubmissionsList = ({ submissions, isLoading }) => {
     }
   };
 
-  // Helper function to calculate average memory usage
+  
   const calculateAverageMemory = (memoryData) => {
     const memoryArray = safeParse(memoryData).map((m) =>
       parseFloat(m.split(" ")[0])
@@ -30,7 +30,7 @@ const SubmissionsList = ({ submissions, isLoading }) => {
     );
   };
 
-  // Helper function to calculate average runtime
+ 
   const calculateAverageTime = (timeData) => {
     const timeArray = safeParse(timeData).map((t) =>
       parseFloat(t.split(" ")[0])
@@ -39,7 +39,7 @@ const SubmissionsList = ({ submissions, isLoading }) => {
     return timeArray.reduce((acc, curr) => acc + curr, 0) / timeArray.length;
   };
 
-  // Loading state
+  
   if (isLoading) {
     return (
       <div className="flex justify-center items-center p-8">
@@ -48,7 +48,7 @@ const SubmissionsList = ({ submissions, isLoading }) => {
     );
   }
 
-  // No submissions state
+
   if (!submissions?.length) {
     return (
       <div className="text-center p-8">

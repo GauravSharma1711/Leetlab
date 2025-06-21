@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <div className=' min-h-screen w-full ' >
 
-    {/* navbar */}
+   
    <Navbar/>
     <Home/>
    

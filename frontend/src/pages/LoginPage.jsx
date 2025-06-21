@@ -12,11 +12,11 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = { email, password };
-    const success = await login(formData); // Assume login returns true on success
+    const success = await login(formData); 
     if (success) {
       navigate('/problems');
     }
-    // Optionally, handle error state if login fails
+    
     setEmail('');
     setPassword('');
   };
