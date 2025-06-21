@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuthStore from '../store/authStore.js';
 import useProblemStore from '../store/problemStore.js';
+import Navbar from '../components/Navbar.jsx'
 import {Link} from 'react-router-dom'
 
 const ProfilePage = () => {
@@ -47,8 +48,16 @@ const ProfilePage = () => {
 
 
   return (
-    <div className='min-h-screen w-full flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8 bg-base-200'>
+<div className='flex flex-col min-h-screen bg-base-200'>
+      {/* Navbar section, sticky at the top */}
+      <div className='w-full sticky top-0 z-50'>
+        <Navbar/>
+      </div>
+    <div className='min-h-screen  w-full flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8 bg-base-200'>
+
       {/* User Profile Section */}
+
+
       <div className='card w-full max-w-4xl bg-base-100 shadow-xl mb-8'>
         <div className='card-body'>
           <h2 className='card-title text-3xl text-primary mb-4'>User Profile</h2>
@@ -177,6 +186,7 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
