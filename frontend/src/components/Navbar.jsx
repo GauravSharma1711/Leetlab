@@ -2,6 +2,10 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import useAuthStore from '../store/authStore';
 
+import { useLocation } from 'react-router-dom';
+
+
+
 const Navbar = () => {
   const navigate = useNavigate();
   const { logout, authUser } = useAuthStore();
@@ -19,6 +23,11 @@ const Navbar = () => {
   const handleLogin = () => {
     navigate('/login');
   };
+
+
+const location = useLocation();
+const currentPath = location.pathname;
+
 
   return (
     <nav className="bg-gray-800 text-gray-100 shadow-lg px-6 py-4 flex justify-between items-center z-20 relative">
@@ -60,16 +69,25 @@ const Navbar = () => {
 
           
             <ul className="absolute right-0 mt-3 w-52 bg-gray-700 rounded-lg shadow-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-focus-within:opacity-100 group-hover:visible group-focus-within:visible transform translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-all duration-300 z-50">
-              <li>
+              {
+      currentPath!=="/profile" &&
+             ( 
+             <li>
                 <Link to={'/profile'} className="block px-4 py-3 text-gray-200 hover:bg-gray-600 hover:text-white transition-colors duration-200">
                   Profile
                 </Link>
               </li>
-             <li>
+              ) 
+              }
+              {
+       authUser.role ==="ADMIN"?
+            ( <li>
                 <Link to={'/createProblem'} className="block px-4 py-3 text-gray-200 hover:bg-gray-600 hover:text-white transition-colors duration-200">
                   Create Problem
                 </Link>
-              </li>
+              </li>)
+              : ""
+              }
               <li>
                 <button onClick={handleLogout} className="block w-full text-left px-4 py-3 text-red-400 hover:bg-gray-600 hover:text-red-300 transition-colors duration-200">
                   Logout
