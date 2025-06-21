@@ -1,12 +1,12 @@
 
 import { Plus, Trash2, Code2, FileText, CheckCircle2, Download } from "lucide-react";
 import Editor from "@monaco-editor/react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import  axiosInstance  from "../utils/axios.js";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { BookOpen,Lightbulb } from "lucide-react";
-// Sample problem data for pre-filling the form (remains the same)
+
 const sampledpData = {
     title: "Climbing Stairs",
     description:
@@ -252,7 +252,7 @@ class Main {
     },
 };
 
-// Sample problem data for another type of question
+
 const sampleStringProblem = {
     title: "Valid Palindrome",
     description:
@@ -456,7 +456,7 @@ public class Main {
 const CreateProblemForm = () => {
     const navigate = useNavigate();
 
-    // State for all form fields
+   
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -483,12 +483,12 @@ const CreateProblemForm = () => {
         },
     });
 
-    // State for validation errors
+    
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
-    const [sampleType, setSampleType] = useState("DP"); // Default to DP problem
+    const [sampleType, setSampleType] = useState("DP"); 
 
-    // Generic handleChange for basic inputs
+   
     const handleChange = useCallback((e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -501,7 +501,7 @@ const CreateProblemForm = () => {
         }
     }, [errors]);
 
-    // Handle change for nested example inputs
+   
     const handleExampleChange = useCallback((lang, field, value) => {
         setFormData((prevData) => ({
             ...prevData,
@@ -520,7 +520,7 @@ const CreateProblemForm = () => {
         }
     }, [errors]);
 
-    // Handle change for tags array
+    
     const handleTagChange = useCallback((index, value) => {
         const newTags = [...formData.tags];
         newTags[index] = value;
@@ -543,7 +543,7 @@ const CreateProblemForm = () => {
         }
     }, [formData.tags, errors]);
 
-    // Handle change for test cases array
+   
     const handleTestCaseChange = useCallback((index, field, value) => {
         const newTestCases = [...formData.testcases];
         newTestCases[index] = {
@@ -561,7 +561,7 @@ const CreateProblemForm = () => {
         }
     }, [formData.testcases, errors]);
 
-    // Handle change for Monaco Editor content
+    
     const handleEditorChange = useCallback((language, type, value) => {
         setFormData((prevData) => ({
             ...prevData,
@@ -613,7 +613,7 @@ const CreateProblemForm = () => {
         });
     }, []);
 
-    // Basic client-side validation
+    
     const validateForm = useCallback(() => {
         let newErrors = {};
 
@@ -674,12 +674,12 @@ const CreateProblemForm = () => {
     }, [formData]);
 
     const onSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault(); 
         const isValid = validateForm();
 
         if (!isValid) {
             toast.error("Please correct the errors in the form.");
-            // Scroll to the first error
+            
             const firstErrorElement = document.querySelector('.label-text-alt.text-error');
             if (firstErrorElement) {
                 firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -706,23 +706,23 @@ const CreateProblemForm = () => {
         }
     };
 
-    // Function to load sample data
+    
     const loadSampleData = useCallback(() => {
         const sampleData =
             sampleType === "DP" ? sampledpData : sampleStringProblem;
 
         setFormData({
             ...sampleData,
-            tags: sampleData.tags, // Ensure tags are spread properly
-            testCases: sampleData.testCases, // Ensure test cases are spread properly
+            tags: sampleData.tags,
+            testCases: sampleData.testcases, 
         });
-        setErrors({}); // Clear any previous errors
+        setErrors({}); 
     }, [sampleType]);
 
-    // Effect to load sample data when sampleType changes
-    // useEffect(() => {
-    //     loadSampleData();
-    // }, [sampleType, loadSampleData]); // Uncomment and add sampleType to dependency array if you want it to auto-load on type change
+
+    useEffect(() => {
+        loadSampleData();
+    }, [sampleType, loadSampleData]); 
 
     return (
         <div className="container mx-auto py-8 px-4 max-w-7xl">
