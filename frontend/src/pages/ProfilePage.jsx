@@ -11,10 +11,10 @@ const ProfilePage = () => {
   const [medium, setMedium] = useState(0);
   const [hard, setHard] = useState(0);
 
- 
   
   
- 
+  
+  
   useEffect(() => {
     getSolvedProblemByUser();
   }, [getSolvedProblemByUser]);
@@ -133,44 +133,47 @@ const ProfilePage = () => {
           <h1 className='card-title text-3xl text-primary text-center mb-6'>
             All Solved Problems
           </h1>
-          <div className=' m-4 gap-6 flex flex-col justify-items-center'> 
-            {solvedProblems && solvedProblems.length > 0 ? (
-              solvedProblems.map((problem) => (
-                <div key={problem.id} className=' flex card mt-8 w-full bg-base-200 shadow-lg rounded-box '>
-                  <div className='card-body p-5 flex  justify-between h-full'>
-                    <div> {/* Wrapper for title and description */}
-                      <h3 className='card-title text-xl font-bold text-base-content mb-2'>
-                        <Link to={`/problem/${problem.id}`}>
-                        {problem.title}
-                        </Link>
-                      </h3>
-                      <p className='text-sm text-base-content opacity-80 line-clamp-3 mb-4'>
-                        {problem.description}
-                      </p>
-                    </div>
-                    <div className='card-actions  mt-auto'> {/* Pushed to bottom */}
-                      <div
-                        className={`badge ${
-                          problem.difficulty === 'EASY'
-                            ? 'badge-success'
-                            : problem.difficulty === 'MEDIUM'
-                            ? 'badge-warning'
-                            : 'badge-error'
-                        } badge-lg`} // Larger badge
-                      >
-                        {problem.difficulty}
+          {/* Added div for scrollbar */}
+          <div className='max-h-96 overflow-y-auto pr-2'> {/* Added max-h-96 and overflow-y-auto */}
+            <div className=' m-4 gap-6 flex flex-col justify-items-center'> 
+              {solvedProblems && solvedProblems.length > 0 ? (
+                solvedProblems.map((problem) => (
+                  <div key={problem.id} className=' flex card mt-8 w-full bg-base-200 shadow-lg rounded-box '>
+                    <div className='card-body p-5 flex  justify-between h-full'>
+                      <div> {/* Wrapper for title and description */}
+                        <h3 className='card-title text-xl font-bold text-base-content mb-2'>
+                          <Link to={`/problem/${problem.id}`}>
+                          {problem.title}
+                          </Link>
+                        </h3>
+                        <p className='text-sm text-base-content opacity-80 line-clamp-3 mb-4'>
+                          {problem.description}
+                        </p>
                       </div>
-                      
-                     
+                      <div className='card-actions  mt-auto'> {/* Pushed to bottom */}
+                        <div
+                          className={`badge ${
+                            problem.difficulty === 'EASY'
+                              ? 'badge-success'
+                              : problem.difficulty === 'MEDIUM'
+                              ? 'badge-warning'
+                              : 'badge-error'
+                          } badge-lg`} // Larger badge
+                        >
+                          {problem.difficulty}
+                        </div>
+                        
+                        
+                      </div>
                     </div>
                   </div>
+                ))
+              ) : (
+                <div className='col-span-full w-full text-center py-10'> 
+                  <p className='text-xl text-gray-500'>No problems solved yet! Keep practicing!</p>
                 </div>
-              ))
-            ) : (
-              <div className='col-span-full w-full text-center py-10'> 
-                <p className='text-xl text-gray-500'>No problems solved yet! Keep practicing!</p>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>

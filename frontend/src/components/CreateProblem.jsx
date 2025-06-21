@@ -1,7 +1,7 @@
 
 import { Plus, Trash2, Code2, FileText, CheckCircle2, Download } from "lucide-react";
 import Editor from "@monaco-editor/react";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import  axiosInstance  from "../utils/axios.js";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -552,7 +552,7 @@ const CreateProblemForm = () => {
         };
         setFormData((prevData) => ({
             ...prevData,
-            testCases: newTestCases,
+            testcases: newTestCases,
         }));
         // Clear error
         const errorKey = `testCases.${index}.${field}`;
@@ -720,9 +720,7 @@ const CreateProblemForm = () => {
     }, [sampleType]);
 
 
-    useEffect(() => {
-        loadSampleData();
-    }, [sampleType, loadSampleData]); 
+    
 
     return (
         <div className="container mx-auto py-8 px-4 max-w-7xl">
