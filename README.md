@@ -1,37 +1,44 @@
-📚 LeetLab - A Full-Stack LeetCode-Style Coding Platform
-Welcome to LeetLab — a fully functional LeetCode-inspired platform where users can solve coding problems, run code against test cases, track progress, and much more! 🚀
+# 📚 LeetLab - A Full-Stack LeetCode-Style Coding Platform
 
-🚀 Features
-✅ User Authentication (Signup/Login) 🔑
-✅ Problem List with Difficulty Levels & Tags 📚
-✅ Built-in Code Editor (Monaco Editor) with Language Selection 💻
-✅ Code Execution via Judge0 API ⚙️
-✅ View Previous Submissions 📜
-✅ Track Solved Problems 🎯
-✅ Create and Manage Playlists to Group Problems 🗂️
+Welcome to **LeetLab** — a fully functional LeetCode-inspired platform where users can solve coding problems, run code against test cases, track progress, and much more! 🚀  
 
-🛠️ Tech Stack
-👨‍💻 Frontend:
-⚛️ React.js
+---
 
-⚡ Vite
+## 🚀 Features
 
-🎨 Tailwind CSS
+✅ **User Authentication** (Signup/Login) 🔑  
+✅ **Problem List** with Difficulty Levels & Tags 📚  
+✅ **Built-in Code Editor** (Monaco Editor) with Language Selection 💻  
+✅ **Code Execution via Judge0 API** ⚙️  
+✅ **View Previous Submissions** 📜  
+✅ **Track Solved Problems** 🎯  
+✅ **Create and Manage Playlists** to Group Problems 🗂️  
 
-📝 Monaco Editor
+---
 
-🖥️ Backend:
-🔗 Node.js
+## 🛠️ Tech Stack
 
-🚂 Express.js
+### 👨‍💻 Frontend:
+- ⚛️ React.js
+- ⚡ Vite
+- 🎨 Tailwind CSS
+- 📝 Monaco Editor
 
-🛢️ PostgreSQL
+### 🖥️ Backend:
+- 🔗 Node.js
+- 🚂 Express.js
+- 🛢️ PostgreSQL
+- 🔄 Prisma ORM
+- 🔒 JWT Authentication
+- ⚙️ Judge0 API (for code execution)
 
-🔄 Prisma ORM
+---
 
-🔒 JWT Authentication
+## 🔗 Live Demo
 
-⚙️ Judge0 API (for code execution)
+🌐 [LeetLab Live](https://leetlab-6rng.onrender.com)
 
-🔗 Live Demo
-🌐 LeetLab Live
+---
+
+## 📂 Project Structure
+
