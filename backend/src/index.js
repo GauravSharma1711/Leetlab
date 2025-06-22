@@ -4,6 +4,8 @@ import cors from 'cors';
 dotenv.config()
 import cookieParser from 'cookie-parser'
 
+import path from "path";
+
 import authRoutes from './routes/auth.routes.js'
 import problemRoutes from './routes/problem.routes.js'
 import executionRoute from './routes/executeCode.routes.js'
@@ -15,6 +17,8 @@ const app  = express();
 
 const PORT = process.env.PORT || 8080;
 
+const __dirname = path.resolve();
+
 app.use(express.json())
 app.use(cookieParser())
 
@@ -23,15 +27,22 @@ app.use(cors({
   credentials: true 
 }));
 
-app.get('/',(req,res)=>{
-    res.send("hello leetlab🔥")
-})
+
 
 app.use('/api/v1/auth',authRoutes)
 app.use('/api/v1/problems',problemRoutes);
 app.use('/api/v1/execute',executionRoute);
 app.use('/api/v1/submission',submissionRoutes);
 app.use('/api/v1/playlist',playlistRoutes);
+
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+  });
+}
 
 app.listen(PORT,()=>{
 console.log(`server is listning to ${PORT}`)
