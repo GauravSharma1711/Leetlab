@@ -111,8 +111,8 @@ const ProblemPage = () => {
           <ChevronLeft className='w-5 h-5' />
           Back to Problems
         </Link>
-        <div className='flex gap-3'> {/* Increased gap */}
-          <button className="px-5 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors duration-200 shadow-md">Submit Solution</button>
+        <div className='flex gap-3'> 
+        
 
           <button 
             onClick={handleRunCode}
