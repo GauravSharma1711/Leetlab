@@ -40,5 +40,3 @@ Welcome to **LeetLab** — a fully functional LeetCode-inspired platform where u
 
 ---
 
-## 📂 Project Structure
-
